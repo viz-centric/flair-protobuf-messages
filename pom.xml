@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.project.bi</groupId>
@@ -24,24 +26,24 @@
     </properties>
     <scm>
         <connection>
-            scm:git:https://${BITBUCKET_USER}:${BITBUCKET_PASS}@bitbucket.org/vizcentricadmin/flair-protobuf-messages.git
+            scm:git:https://github.com/viz-centric/flair-protobuf-messages.git
         </connection>
-        <url>http://${BITBUCKET_USER}:${BITBUCKET_PASS}@bitbucket.org/vizcentricadmin/flair-protobuf-messages.git</url>
+        <url>https://github.com/viz-centric/flair-protobuf-messages.git</url>
         <developerConnection>
-            scm:git:https://${BITBUCKET_USER}:${BITBUCKET_PASS}@bitbucket.org/vizcentricadmin/flair-protobuf-messages.git
+            scm:git:https://github.com/viz-centric/flair-protobuf-messages.git
         </developerConnection>
         <tag>HEAD</tag>
     </scm>
-    <distributionManagement>
-        <repository>
-            <id>maven-releases</id>
-            <url>https://devsupport-vizcentric.com/nexus/repository/maven-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>maven-snapshots</id>
-            <url>https://devsupport-vizcentric.com/nexus/repository/maven-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
+    <repository>
+        <id>dev-azure-com-vizcentric-flair-protobuf-messages</id>
+        <url>https://pkgs.dev.azure.com/VizCentric/_packaging/flair-protobuf-messages/maven/v1</url>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/io.grpc/grpc-netty-shaded -->
         <dependency>
@@ -68,8 +70,6 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
     <build>
         <pluginManagement>
@@ -104,23 +104,6 @@
                             </configuration>
                         </execution>
                     </executions>
-                </plugin>
-                <plugin>
-                    <groupId>org.sonatype.plugins</groupId>
-                    <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>${nexus-staging.version}</version>
-                    <executions>
-                        <execution>
-                            <id>default-deploy</id>
-                            <phase>deploy</phase>
-                            <goals>
-                                <goal>deploy</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <skipStaging>true</skipStaging>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -196,7 +179,8 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
                         <version>${maven-compiler.version}</version>
-                        <configuration> <!-- Compile java 8 compatible bytecode -->
+                        <configuration>
+                            <!-- Compile java 8 compatible bytecode -->
                             <source>${java.version}</source>
                             <target>${java.version}</target>
                         </configuration>
@@ -226,25 +210,6 @@
                                 </goals>
                             </execution>
                         </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>${nexus-staging.version}</version>
-                        <executions>
-                            <execution>
-                                <id>default-deploy</id>
-                                <phase>deploy</phase>
-                                <goals>
-                                    <goal>deploy</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <serverId>maven-releases</serverId>
-                            <nexusUrl>https://devsupport-vizcentric.com/nexus/</nexusUrl>
-                            <skipStaging>true</skipStaging>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
