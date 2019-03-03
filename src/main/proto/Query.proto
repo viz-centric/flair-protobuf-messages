@@ -53,12 +53,14 @@ message Query {
         BIDITOGGLE = 1;
     }
     QueryType queryType = 11;
+    bool enableCaching = 12;
 }
 
 message QueryResponse {
      string queryId = 1;
      string userId = 2;
      string data = 3;
+     CacheMetadata cacheMetadata = 4;
 }
 
 message QueryValidationResponse {
@@ -84,6 +86,11 @@ message RunQueryRequest {
 
 message RunQueryResponse {
     string result = 1;
+    CacheMetadata cacheMetadata = 2;
+}
+
+message CacheMetadata {
+    int64 dateCreated = 1;
 }
 
 service QueryService {
