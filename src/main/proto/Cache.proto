@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package messages;
+
+option java_package = "com.flair.bi.messages";
+option java_multiple_files = true;
+
+message GetCacheRequest {
+    string key = 1;
+    string table = 2;
+}
+
+message GetCacheResponse {
+    string result = 1;
+    CacheMetadata metadata = 2;
+}
+
+message PutCacheRequest {
+    string key = 1;
+    string table = 2;
+    string value = 3;
+}
+
+message PutCacheResponse {
+
+}
+
+message CacheMetadata {
+    int64 dateCreated = 1;
+}
+
+service CacheService {
+    rpc GetCache(GetCacheRequest) returns (GetCacheResponse) {};
+    rpc PutCache(PutCacheRequest) returns (PutCacheResponse) {};
+}
