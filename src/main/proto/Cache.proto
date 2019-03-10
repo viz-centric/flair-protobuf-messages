@@ -19,6 +19,9 @@ message PutCacheRequest {
     string key = 1;
     string table = 2;
     string value = 3;
+    int64 refreshAfterDate = 4;
+    int64 purgeAfterDate = 5;
+    int32 refreshAfterCount = 6;
 }
 
 message PutCacheResponse {
@@ -28,6 +31,21 @@ message PutCacheResponse {
 message CacheMetadata {
     int64 dateCreated = 1;
 }
+
+message CacheEntry {
+    string key = 1;
+    string value = 2;
+    int64 dateCreated = 3;
+    int64 refreshAfterDate = 4;
+    int64 purgeAfterDate = 5;
+    int32 refreshAfterCount = 6;
+}
+
+message CacheCountEntry {
+    string key = 1;
+    int32 count = 2;
+}
+
 
 service CacheService {
     rpc GetCache(GetCacheRequest) returns (GetCacheResponse) {};
