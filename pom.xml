@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.project.bi</groupId>
     <artifactId>flair-messages</artifactId>
@@ -13,7 +11,7 @@
         <java.version>1.8</java.version>
         <antlr4.version>4.5</antlr4.version>
         <maven-compiler.version>3.7.0</maven-compiler.version>
-        <bi-common.version>1.0.0</bi-common.version>
+        <bi-common.version>1.3.1</bi-common.version>
         <builder-helper.version>1.8</builder-helper.version>
         <junit.version>4.12</junit.version>
         <mockito.version>2.16.0</mockito.version>
@@ -22,7 +20,12 @@
         <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
         <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
         <grpc.version>1.18.0</grpc.version>
+        <maven.surefire.plugin>2.22.1</maven.surefire.plugin>
+        <os.maven.plugin>1.5.0.Final</os.maven.plugin>
+        <protobuf.maven.plugin>0.5.1</protobuf.maven.plugin>
         <protobufGeneratorPath>${project.build.directory}/generated-source/protobuf</protobufGeneratorPath>
+        <maven.scm.provider.gitexe>1.9.5</maven.scm.provider.gitexe>
+        <project.scm.id>github-credentials</project.scm.id>
     </properties>
     <scm>
         <connection>
@@ -123,11 +126,16 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
                     <version>${maven-release-plugin.version}</version>
+                    <configuration>
+                        <tagNameFormat>v@{project.version}</tagNameFormat>
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                        <releaseProfiles>releases</releaseProfiles>
+                    </configuration>
                     <dependencies>
                         <dependency>
                             <groupId>org.apache.maven.scm</groupId>
                             <artifactId>maven-scm-provider-gitexe</artifactId>
-                            <version>1.9.4</version>
+                            <version>${maven.scm.provider.gitexe}</version>
                         </dependency>
                     </dependencies>
                 </plugin>
@@ -137,14 +145,14 @@
             <extension>
                 <groupId>kr.motd.maven</groupId>
                 <artifactId>os-maven-plugin</artifactId>
-                <version>1.5.0.Final</version>
+                <version>${os.maven.plugin}</version>
             </extension>
         </extensions>
         <plugins>
             <plugin>
                 <groupId>org.xolstice.maven.plugins</groupId>
                 <artifactId>protobuf-maven-plugin</artifactId>
-                <version>0.5.1</version>
+                <version>${protobuf.maven.plugin}</version>
                 <configuration>
                     <protocArtifact>com.google.protobuf:protoc:3.5.1-1:exe:${os.detected.classifier}</protocArtifact>
                     <pluginId>grpc-java</pluginId>
@@ -176,6 +184,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin}</version>
                 <configuration>
                     <!-- Force alphabetical order to have a reproducible build -->
                     <runOrder>alphabetical</runOrder>
