@@ -48,6 +48,7 @@ message Connection {
     int64 connectionType = 5;
     string linkId = 6;
     map<string, string> details = 7;
+    map<string, string> connectionParameters = 8;
 }
 
 message ConnectionType {
