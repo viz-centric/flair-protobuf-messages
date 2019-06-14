@@ -5,13 +5,22 @@ package messages;
 option java_package = "com.flair.bi.messages";
 option java_multiple_files = true;
 
+message QueryField {
+    enum QueryFieldType {
+        NORMAL = 0;
+        SANITIZE = 1;
+    }
+    string name = 1;
+    QueryFieldType type = 2;
+}
+
 message Query {
     string queryId = 1;
     string userId = 2;
     string sourceId = 3;
     string source = 4;
-    repeated string fields = 5;
-    repeated string groupBy = 6;
+    repeated QueryField fields = 5;
+    repeated QueryField groupBy = 6;
     int64 limit = 7;
     message ConditionExpressionHolder {
         enum SourceType {
@@ -40,7 +49,7 @@ message Query {
     repeated ConditionExpressionHolder conditionExpressions = 8;
     bool distinct = 9;
     message SortHolder {
-        string featureName = 1;
+        QueryField featureName = 1;
         enum Direction {
             ASC = 0;
             DESC = 1;
