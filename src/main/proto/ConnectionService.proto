@@ -33,8 +33,6 @@ message GetAllConnectionTypesRequest {
 }
 
 message TestConnectionRequest {
-    string connectionLinkId = 1;
-    string datasourceName = 2;
     Connection connection = 3;
 }
 
