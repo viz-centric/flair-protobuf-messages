@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package messages.pulsar;
+
+option java_package = "com.flair.bi.messages.pulsar";
+option java_multiple_files = true;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/any.proto";
+
+message PulseHeader {
+    // Name of the service producing the message
+    string service = 1;
+    // Time of source event happening
+    google.protobuf.Timestamp eventTime = 2;
+}
+
+message PulseBody {
+    // Summary of the event
+    string summary = 1;
+    // Important information needed for decison making:[ type.googleapis.com/com.flair.bi.messages.<TypeOfMessage> ]
+    map<string, string> eventData = 2;
+}
+
+message PulseConfig {
+    // Log the action taken by Flair or not?
+    bool log = 1;
+    // Time the log needs to live for?
+    int32 ttl = 2;
+}

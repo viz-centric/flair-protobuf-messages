@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package messages.pulsar;
+
+import "Pulse.proto";
+
+option java_package = "com.flair.bi.messages.pulsar";
+option java_multiple_files = true;
+
+message PulseRequest {
+    // Message metadata
+    PulseHeader pulseHeader = 1;
+    // Event related details
+    PulseBody pulseBody = 2;
+    // Configuration for the message
+    PulseConfig pulseConfig = 3;
+}
+
+message PulseResponse {
+
+}
+
+service PulsarService {
+    // RPC for publishing a pulse to the notification service
+    rpc PublishPulse(PulseRequest) returns (PulseResponse) {};
+}
