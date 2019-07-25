@@ -31,6 +31,7 @@ message RepUserReq {
 }
 message RepUserResp {
     repeated ScheduleReport reports = 1;
+    string message = 2;
 }
 
 message RepUserCountReq {
