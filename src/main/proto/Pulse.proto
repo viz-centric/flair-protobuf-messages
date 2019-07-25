@@ -1,37 +1,25 @@
 syntax = "proto3";
 
-package messages;
+package messages.pulsar;
 
-option java_package = "com.flair.bi.messages";
+option java_package = "com.flair.bi.messages.pulsar";
 option java_multiple_files = true;
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/any.proto";
 
 message PulseHeader {
-    // Type of Source systems supported by Flair
-    enum PulseSourceSystem {
-        KAFKA = 0;
-        // RABBITMQ = 1;
-        // ACTIVEMQ = 2;
-        // KENISIS = 3;
-        // CLOUDPUBSUB = 4;
-    }
     // Name of the service producing the message
     string service = 1;
-    // Topic from which this pulse was created from
-    string topic = 2;
-    // Type of system generating the pulse
-    PulseSourceSystem pulseSourceSystem = 3;
     // Time of source event happening
-    google.protobuf.Timestamp eventTime = 4;
+    google.protobuf.Timestamp eventTime = 2;
 }
 
 message PulseBody {
     // Summary of the event
     string summary = 1;
     // Important information needed for decison making:[ type.googleapis.com/com.flair.bi.messages.<TypeOfMessage> ]
-    google.protobuf.Any eventData = 2;
+    map<string, string> eventData = 2;
 }
 
 message PulseConfig {
@@ -39,8 +27,4 @@ message PulseConfig {
     bool log = 1;
     // Time the log needs to live for?
     int32 ttl = 2;
-    // Require Acknoledgement?
-    bool ack = 3;
-    // ack topic
-    string ackTopic = 4;
 }

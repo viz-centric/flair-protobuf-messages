@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package messages;
+package messages.pulsar;
 
 import "Pulse.proto";
 
-option java_package = "com.flair.bi.messages";
+option java_package = "com.flair.bi.messages.pulsar";
 option java_multiple_files = true;
 
 message PulseRequest {
