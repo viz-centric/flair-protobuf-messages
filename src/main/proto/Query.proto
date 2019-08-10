@@ -56,12 +56,13 @@ message Query {
         string featureName = 1;
         string value = 2;
         enum ComparatorType {
-            EQ = 0;
-            NEQ = 1;
-            GT = 2;
-            LT = 3;
-            GTE = 4;
-            LTE = 5;
+            UNKNOWN = 0;
+            EQ = 1;
+            NEQ = 2;
+            GT = 3;
+            LT = 4;
+            GTE = 5;
+            LTE = 6;
         }
         ComparatorType comparatorType = 3;
     }
