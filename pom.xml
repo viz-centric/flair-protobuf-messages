@@ -24,6 +24,7 @@
         <protobufGeneratorPath>${project.build.directory}/generated-source/protobuf</protobufGeneratorPath>
         <maven.scm.provider.gitexe>1.9.5</maven.scm.provider.gitexe>
         <project.scm.id>github-credentials</project.scm.id>
+        <maven.javadoc.skip>true</maven.javadoc.skip>
     </properties>
     <scm>
         <connection>
