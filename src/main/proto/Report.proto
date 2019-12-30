@@ -65,4 +65,24 @@ message Schedule {
 message ReportLog {
     string task_status = 1;
     string task_executed = 2;
+    string threshold_met = 3;
+    string notification_sent = 4;
+    string channel = 5;
+}
+
+message ChannelConnection {
+    repeated Channelparameters ChannelProperties = 1;
+}
+
+message Channelparameters {
+  string id = 1;
+  repeated ConnectionProperties connectionProperties = 2;
+}
+
+message ConnectionProperties {
+    string displayName = 1;
+    string fieldName = 2;
+    int64 order = 3;
+    string fieldType = 4;
+    bool required = 5;
 }
