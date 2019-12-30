@@ -11,12 +11,14 @@ message ScheduleReport {
     AssignReport assign_report = 3;
     Schedule schedule = 4;
     string query = 5;
+    string constraints = 6;
 }
 
 message Report {
     string userid = 1;
     string dashboard_name = 2;
     string view_name = 3;
+    string view_id = 11;
     string share_link = 4;
     string build_url = 5;
     string mail_body = 6;
@@ -34,7 +36,7 @@ message ReportLineItem {
 }
 
 message AssignReport {
-    repeated string channel = 1;
+    string channel = 1;
     string slack_API_Token = 2;
     string channel_id = 3;
     string stride_API_Token = 4;
