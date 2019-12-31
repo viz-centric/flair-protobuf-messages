@@ -36,7 +36,7 @@ message ReportLineItem {
 }
 
 message AssignReport {
-    string channel = 1;
+    repeated string channel = 1;
     string slack_API_Token = 2;
     string channel_id = 3;
     string stride_API_Token = 4;
