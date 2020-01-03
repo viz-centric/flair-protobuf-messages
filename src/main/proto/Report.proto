@@ -11,12 +11,14 @@ message ScheduleReport {
     AssignReport assign_report = 3;
     Schedule schedule = 4;
     string query = 5;
+    string constraints = 6;
 }
 
 message Report {
     string userid = 1;
     string dashboard_name = 2;
     string view_name = 3;
+    string view_id = 11;
     string share_link = 4;
     string build_url = 5;
     string mail_body = 6;
@@ -69,22 +71,18 @@ message ReportLog {
 }
 
 message ChannelConnection {
-    repeated ChannelProperties channelProperties = 1;
+    repeated Channelparameters channelProperties = 1;
 }
 
-message ChannelProperties {
-    string id = 1;
-    repeated ChannelParameters channel_parameters = 2;
-}
-
-message ChannelParameters {
-    repeated ConnectionProperties connectionProperties = 1;
+message Channelparameters {
+  string id = 1;
+  repeated ConnectionProperties channelParameters = 2;
 }
 
 message ConnectionProperties {
     string displayName = 1;
     string fieldName = 2;
-    int64 order = 3;
+    int32 order = 3;
     string fieldType = 4;
     bool required = 5;
 }
