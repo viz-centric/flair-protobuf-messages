@@ -65,7 +65,7 @@ message Schedule {
 message ReportLog {
     string task_status = 1;
     string task_executed = 2;
-    string threshold_met = 3;
+    bool threshold_met = 3;
     bool notification_sent = 4;
     string channel = 5;
 }
@@ -86,3 +86,37 @@ message ConnectionProperties {
     string fieldType = 4;
     bool required = 5;
 }
+
+message TeamConfig {
+    string id = 1;
+    TeamConfigParameters config = 2;
+}
+
+message TeamConfigParameters {
+    string webhookName = 1;
+    string webhookURL = 2;
+}
+
+message EmailConfig {
+    string id = 1;
+    EmailParameters config = 2;
+}
+
+message EmailParameters {
+    string host = 1;
+    string sender = 2;
+    int64 port = 3;
+    string user = 4;
+    string password = 5;
+}
+
+message TeamConfigList {
+    int64 success = 1;
+    repeated TeamConfigParameters records = 2;
+}
+
+message EmailConfigList {
+    int64 success = 1;
+    repeated EmailParameters records = 2;
+}
+
