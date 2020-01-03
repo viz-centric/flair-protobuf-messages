@@ -77,13 +77,25 @@ message SearchReportsResponse {
 }
 
 message GetChannelPropertiesRequest {
-    
+
 }
 
 message GetChannelPropertiesResponse {
-   repeated ChannelConnection ChannelConnection = 1; 
+    repeated ChannelConnection ChannelConnection = 1;
 }
 
+message GetScheduleReportLogRequest {
+    int64 task_log_meta_id = 1;
+}
+
+message GetScheduleReportLogResponse {
+    ReportLog report_log = 1;
+    ApiError error = 2;
+}
+
+message ApiError {
+    string message = 1;
+}
 
 service ReportService {
     rpc GetScheduledReport(GetScheduledReportRequest) returns (ScheduleReportResponse) {};
@@ -96,4 +108,5 @@ service ReportService {
     rpc GetScheduleReportLogs(GetScheduleReportLogsRequest) returns (GetScheduleReportLogsResponse) {};
     rpc SearchReports(SearchReportsRequest) returns (SearchReportsResponse) {};
     rpc GetChannelProperties(GetChannelPropertiesRequest) returns (GetChannelPropertiesResponse) {};
+    rpc GetScheduleReportLog(GetScheduleReportLogRequest) returns (GetScheduleReportLogResponse) {};
 }
