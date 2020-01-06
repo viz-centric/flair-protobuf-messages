@@ -77,7 +77,7 @@ message SearchReportsResponse {
 }
 
 message GetChannelPropertiesRequest {
-    
+
 }
 
 message GetChannelPropertiesResponse {
