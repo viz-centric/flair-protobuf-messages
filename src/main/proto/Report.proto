@@ -74,7 +74,7 @@ message ReportLog {
 }
 
 message ChannelConnection {
-    ChannelParameters channelParameters = 1;
+    repeated ChannelParameters channelParameters = 1;
 }
 
 message ChannelParameters {
