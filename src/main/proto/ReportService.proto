@@ -77,11 +77,11 @@ message SearchReportsResponse {
 }
 
 message GetChannelPropertiesRequest {
-
+    
 }
 
 message GetChannelPropertiesResponse {
-   ChannelConnection request = 1; 
+   ChannelConnection request = 1;
 }
 
 message AddTeamConfigsRequest {
@@ -101,7 +101,7 @@ message AddEmailConfigsResponse {
 }
 
 message GetEmailConfigRequest {
-   
+
 }
 
 message GetEmailConfigResponse {
@@ -109,7 +109,7 @@ message GetEmailConfigResponse {
 }
 
 message GetTeamConfigRequest {
-   
+
 }
 
 message GetTeamConfigResponse {
@@ -137,7 +137,7 @@ message DeleteChannelConfigRequest{
 }
 
 message DeleteChannelConfigResponse{
-    repeated ChannelConnection ChannelConnection = 1;
+    string message = 1;
 }
 
 message GetScheduleReportLogRequest {
