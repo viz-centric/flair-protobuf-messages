@@ -81,7 +81,7 @@ message GetChannelPropertiesRequest {
 }
 
 message GetChannelPropertiesResponse {
-   repeated ChannelConnection request = 1; 
+   ChannelConnection request = 1; 
 }
 
 message AddTeamConfigsRequest {
@@ -137,6 +137,19 @@ message DeleteChannelConfigRequest{
 }
 
 message DeleteChannelConfigResponse{
+    repeated ChannelConnection ChannelConnection = 1;
+}
+
+message GetScheduleReportLogRequest {
+    int64 task_log_meta_id = 1;
+}
+
+message GetScheduleReportLogResponse {
+    ReportLog report_log = 1;
+    ApiError error = 2;
+}
+
+message ApiError {
     string message = 1;
 }
 
@@ -158,4 +171,5 @@ service ReportService {
     rpc UpdateTeamWebhookURL(UpdateTeamWebhookURLRequest) returns (UpdateTeamWebhookURLResponse) {};
     rpc UpdateEmailSMTP(UpdateEmailSMTPRequest) returns (UpdateEmailSMTPResponse) {};
     rpc DeleteChannelConfig(DeleteChannelConfigRequest) returns (DeleteChannelConfigResponse) {};
+    rpc GetScheduleReportLog(GetScheduleReportLogRequest) returns (GetScheduleReportLogResponse) {};
 }
