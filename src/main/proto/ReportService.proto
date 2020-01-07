@@ -81,7 +81,7 @@ message GetChannelPropertiesRequest {
 }
 
 message GetChannelPropertiesResponse {
-   ChannelConnection request = 1;
+   ChannelConnection channelParameters = 1;
 }
 
 message AddTeamConfigsRequest {
