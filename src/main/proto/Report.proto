@@ -67,17 +67,13 @@ message Schedule {
 message ReportLog {
     string task_status = 1;
     string task_executed = 2;
-    string threshold_met = 3;
-    string notification_sent = 4;
+    bool thresholdMet = 3;
+    bool notificationSent = 4;
     string channel = 5;
     Query query = 6;
 }
 
-message ChannelConnection {
-    repeated Channelparameters ChannelProperties = 1;
-}
-
-message Channelparameters {
+message ChannelParameters {
   string id = 1;
   repeated ConnectionProperties connectionProperties = 2;
 }
@@ -85,7 +81,23 @@ message Channelparameters {
 message ConnectionProperties {
     string displayName = 1;
     string fieldName = 2;
-    int64 order = 3;
+    int32 order = 3;
     string fieldType = 4;
     bool required = 5;
 }
+
+message TeamConfigParameters {
+    int32 id = 1;
+    string webhookName = 2;
+    string webhookURL = 3;
+}
+
+message EmailParameters {
+    int32 id = 1;
+    string host = 2;
+    string sender = 3;
+    int32 port = 4;
+    string user = 5;
+    string password = 6;
+}
+

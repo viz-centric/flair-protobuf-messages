@@ -77,11 +77,67 @@ message SearchReportsResponse {
 }
 
 message GetChannelPropertiesRequest {
-
+    string channel = 1;
 }
 
 message GetChannelPropertiesResponse {
-    repeated ChannelConnection ChannelConnection = 1;
+   repeated ChannelParameters channelParameters = 1;
+}
+
+message AddTeamConfigsRequest {
+    TeamConfigParameters teamConfigParameter = 1;
+}
+
+message AddTeamConfigsResponse {
+    string message = 1;
+}
+
+message AddEmailConfigsRequest {
+    EmailParameters emailParameter = 1;
+}
+
+message AddEmailConfigsResponse {
+    string message = 1;
+}
+
+message GetEmailConfigRequest {
+    int32 id =1;
+}
+
+message GetEmailConfigResponse {
+    EmailParameters record = 1;
+}
+
+message GetTeamConfigRequest {
+    int32 id =1;
+}
+
+message GetTeamConfigResponse {
+    repeated TeamConfigParameters records = 1;
+}
+
+message UpdateTeamWebhookURLRequest{
+    TeamConfigParameters teamConfigParameter = 1;
+}
+
+message UpdateTeamWebhookURLResponse{
+    string message = 1;
+}
+
+message UpdateEmailSMTPRequest{
+    EmailParameters emailParameter = 1;
+}
+
+message UpdateEmailSMTPResponse{
+    string message = 1;
+}
+
+message DeleteChannelConfigRequest{
+    int32 id = 1;
+}
+
+message DeleteChannelConfigResponse{
+    string message = 1;
 }
 
 message GetScheduleReportLogRequest {
@@ -108,5 +164,12 @@ service ReportService {
     rpc GetScheduleReportLogs(GetScheduleReportLogsRequest) returns (GetScheduleReportLogsResponse) {};
     rpc SearchReports(SearchReportsRequest) returns (SearchReportsResponse) {};
     rpc GetChannelProperties(GetChannelPropertiesRequest) returns (GetChannelPropertiesResponse) {};
+    rpc AddTeamConfigs(AddTeamConfigsRequest) returns (AddTeamConfigsResponse) {};
+    rpc AddEmailConfigs(AddEmailConfigsRequest) returns (AddEmailConfigsResponse) {};
+    rpc GetEmailConfig(GetEmailConfigRequest) returns (GetEmailConfigResponse) {};
+    rpc GetTeamConfig(GetTeamConfigRequest) returns (GetTeamConfigResponse) {};
+    rpc UpdateTeamWebhookURL(UpdateTeamWebhookURLRequest) returns (UpdateTeamWebhookURLResponse) {};
+    rpc UpdateEmailSMTP(UpdateEmailSMTPRequest) returns (UpdateEmailSMTPResponse) {};
+    rpc DeleteChannelConfig(DeleteChannelConfigRequest) returns (DeleteChannelConfigResponse) {};
     rpc GetScheduleReportLog(GetScheduleReportLogRequest) returns (GetScheduleReportLogResponse) {};
 }
