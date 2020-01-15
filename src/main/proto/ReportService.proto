@@ -159,10 +159,10 @@ message createJiraIssueResponse{
 }
 
 message getAllJiraRequest{
-    string status = 1
+    string status = 1;
 }
 message getAllJiraResponse{
-    repeated JiraIssues records = 1;
+    repeated JiraTickets records = 1;
 }
 
 service ReportService {
