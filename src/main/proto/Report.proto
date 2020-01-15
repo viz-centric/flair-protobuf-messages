@@ -110,7 +110,7 @@ message JiraParameters {
 }
 
 message JiraIssues {
-    int issueID = 1;
+    int32 issueID = 1;
     string projectKey = 2;
     string status = 3;
     string createDate = 4;
