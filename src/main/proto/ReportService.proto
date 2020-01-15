@@ -149,15 +149,6 @@ message AddJiraConfigsRequest {
     JiraParameters jiraParameter = 1;
 }
 
-message createJiraIssueRequest{
-    int32 id =1;
-}
-
-message createJiraIssueResponse{
-    string message = 1;
-    string jiraIssueLink = 2;
-}
-
 service ReportService {
     rpc GetScheduledReport(GetScheduledReportRequest) returns (ScheduleReportResponse) {};
     rpc GetAllScheduledReportsByUser(RepUserReq) returns (RepUserResp) {};
