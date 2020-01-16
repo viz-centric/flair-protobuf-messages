@@ -70,7 +70,13 @@ message ReportLog {
     bool thresholdMet = 3;
     bool notificationSent = 4;
     string channel = 5;
-    Query query = 6;
+    string schedulerTaskMetaId = 6;
+    string dashboardName = 7;
+    string viewName = 8;
+    string viewData = 9;
+    string descripition = 10;
+    string comment = 11;
+    Query query = 12;
 }
 
 message ChannelParameters {
