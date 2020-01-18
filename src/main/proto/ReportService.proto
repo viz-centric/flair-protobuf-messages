@@ -164,6 +164,12 @@ message getAllJiraRequest{
 message getAllJiraResponse{
     repeated JiraTickets records = 1;
 }
+message ignoreTicketCreationRequest{
+    int32 id =1;
+}
+message ignoreTicketCreationResponse{
+      string message = 1;
+}
 
 service ReportService {
     rpc GetScheduledReport(GetScheduledReportRequest) returns (ScheduleReportResponse) {};
@@ -189,5 +195,6 @@ service ReportService {
     rpc UpdateJiraConfigs(JiraConfigsRequest) returns (ConfigsResponse) {};
     rpc createjiraTicket(createjiraTicketRequest) returns (createjiraTicketResponse) {};
     rpc getAllJira(getAllJiraRequest) returns (getAllJiraResponse) {};
+    rpc IgnoreTicketCreation(ignoreTicketCreationRequest) returns (ignoreTicketCreationResponse) {};
 
 }

@@ -127,4 +127,7 @@ message JiraTickets {
     string priority = 6;
     string reporter = 7;
     string summary = 8;
+    string viewTicket = 9;
+    string creator = 10;
+
 }
