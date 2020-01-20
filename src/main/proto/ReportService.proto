@@ -164,7 +164,8 @@ message GetAllJiraRequest {
     int32 page = 3; 
 }
 message GetAllJiraResponse {
-    repeated JiraTickets records = 1;
+    int32 totalRecords = 1;
+    repeated JiraTickets records = 2;
 }
 message DisableTicketCreationRequest { 
     int32 schedulerTaskLogs = 1;
