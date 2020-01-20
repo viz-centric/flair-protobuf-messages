@@ -112,15 +112,15 @@ message GetTeamConfigResponse {
     repeated TeamConfigParameters records = 1;
 }
 
-message UpdateTeamWebhookURLRequest{
+message UpdateTeamWebhookURLRequest {
     TeamConfigParameters teamConfigParameter = 1;
 }
 
-message UpdateEmailSMTPRequest{
+message UpdateEmailSMTPRequest { 
     EmailParameters emailParameter = 1;
 }
 
-message DeleteChannelConfigRequest{
+message DeleteChannelConfigRequest {
     int32 id = 1;
 }
 
@@ -149,25 +149,27 @@ message JiraConfigsRequest {
     JiraParameters jiraParameter = 1;
 }
 
-message CreateJiraTicketRequest{
+message CreateJiraTicketRequest {
     int32 id =1;
 }
 
-message CreateJiraTicketResponse{
+message CreateJiraTicketResponse {
     string message = 1;
     string jiraTicketLink = 2;
 }
 
-message GetAllJiraRequest{
+message GetAllJiraRequest {
     string status = 1;
+    int32 pageSize = 2;
+    int32 page = 3; 
 }
-message GetAllJiraResponse{
+message GetAllJiraResponse {
     repeated JiraTickets records = 1;
 }
-message IgnoreTicketCreationRequest{
+message DisableTicketCreationRequest { 
     int32 schedulerTaskLogs = 1;
 }
-message IgnoreTicketCreationResponse{
+message DisableTicketCreationResponse {
       string message = 1;
 }
 
@@ -195,6 +197,6 @@ service ReportService {
     rpc UpdateJiraConfigs(JiraConfigsRequest) returns (ConfigsResponse) {};
     rpc CreateJiraTicket(CreateJiraTicketRequest) returns (CreateJiraTicketResponse) {};
     rpc GetAllJira(GetAllJiraRequest) returns (GetAllJiraResponse) {};
-    rpc IgnoreTicketCreation(IgnoreTicketCreationRequest) returns (IgnoreTicketCreationResponse) {};
+    rpc DisableTicketCreation(DisableTicketCreationRequest) returns (DisableTicketCreationResponse) {};
 
 }
