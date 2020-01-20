@@ -128,5 +128,5 @@ message JiraTickets {
     string reporter = 7;
     string summary = 8;
     string viewTicket = 9;
-    string createBy = 10;
+    string createdBy = 10;
 }
