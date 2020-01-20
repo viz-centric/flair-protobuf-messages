@@ -149,25 +149,25 @@ message JiraConfigsRequest {
     JiraParameters jiraParameter = 1;
 }
 
-message createjiraTicketRequest{
+message CreateJiraTicketRequest{
     int32 id =1;
 }
 
-message createjiraTicketResponse{
+message CreateJiraTicketResponse{
     string message = 1;
     string jiraTicketLink = 2;
 }
 
-message getAllJiraRequest{
+message GetAllJiraRequest{
     string status = 1;
 }
-message getAllJiraResponse{
+message GetAllJiraResponse{
     repeated JiraTickets records = 1;
 }
-message ignoreTicketCreationRequest{
-    int32 id =1;
+message IgnoreTicketCreationRequest{
+    int32 schedulerTaskLogs = 1;
 }
-message ignoreTicketCreationResponse{
+message IgnoreTicketCreationResponse{
       string message = 1;
 }
 
@@ -193,8 +193,8 @@ service ReportService {
     rpc GetJiraConfig(GetJiraConfigRequest) returns (GetJiraConfigResponse) {};
     rpc AddJiraConfigs(JiraConfigsRequest) returns (ConfigsResponse) {};
     rpc UpdateJiraConfigs(JiraConfigsRequest) returns (ConfigsResponse) {};
-    rpc createjiraTicket(createjiraTicketRequest) returns (createjiraTicketResponse) {};
-    rpc getAllJira(getAllJiraRequest) returns (getAllJiraResponse) {};
-    rpc IgnoreTicketCreation(ignoreTicketCreationRequest) returns (ignoreTicketCreationResponse) {};
+    rpc CreateJiraTicket(CreateJiraTicketRequest) returns (CreateJiraTicketResponse) {};
+    rpc GetAllJira(GetAllJiraRequest) returns (GetAllJiraResponse) {};
+    rpc IgnoreTicketCreation(IgnoreTicketCreationRequest) returns (IgnoreTicketCreationResponse) {};
 
 }
