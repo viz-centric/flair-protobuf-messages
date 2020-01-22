@@ -173,7 +173,7 @@ message DisableTicketCreationRequest {
 message NotifyOpenedJiraTicketRequest{
     string project = 1;
     int32 webhookID = 2;
-    repeated string channel = 3;
+    repeated string channels = 3;
 }
 
 
