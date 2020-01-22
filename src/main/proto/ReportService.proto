@@ -170,6 +170,9 @@ message GetAllJiraResponse {
 message DisableTicketCreationRequest { 
     int32 schedulerTaskLogId = 1;
 }
+message NotifyOpenedJiraTicketRequest{
+    string project = 1;
+}
 
 
 service ReportService {
@@ -197,5 +200,5 @@ service ReportService {
     rpc CreateJiraTicket(CreateJiraTicketRequest) returns (CreateJiraTicketResponse) {};
     rpc GetAllJira(GetAllJiraRequest) returns (GetAllJiraResponse) {};
     rpc DisableTicketCreation(DisableTicketCreationRequest) returns (ConfigsResponse) {};
-
+    rpc NotifyOpenedJiraTicket(NotifyOpenedJiraTicketRequest) returns (ConfigsResponse) {};
 }
