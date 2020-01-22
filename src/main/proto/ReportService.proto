@@ -172,6 +172,7 @@ message DisableTicketCreationRequest {
 }
 message NotifyOpenedJiraTicketRequest{
     string project = 1;
+    int32 webhookID = 2;
 }
 
 
