@@ -172,7 +172,7 @@ message DisableTicketCreationRequest {
 }
 
 message NotifyOpenedJiraTicketRequest{
-    OpenJiraTicket = 1;
+    OpenJiraTicket openJiraTicketConfig = 1;
 }
 
 
