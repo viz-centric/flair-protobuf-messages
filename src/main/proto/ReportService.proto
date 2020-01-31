@@ -170,10 +170,9 @@ message GetAllJiraResponse {
 message DisableTicketCreationRequest { 
     int32 schedulerTaskLogId = 1;
 }
+
 message NotifyOpenedJiraTicketRequest{
-    string project = 1;
-    int32 webhookID = 2;
-    repeated string channels = 3;
+    OpenJiraTicket openJiraTicket = 1;
 }
 
 
