@@ -52,9 +52,6 @@ message Query {
         UNARY = 0;
         BIDITOGGLE = 1;
     }
-    message Operation {
-        string operationJson = 1;
-    }
     message HavingHolder {
         Field feature = 1;
         enum ComparatorType {
@@ -67,7 +64,7 @@ message Query {
             LTE = 6;
         }
         ComparatorType comparatorType = 3;
-        Operation operation = 5;
+        string operation = 5;
     }
     QueryType queryType = 11;
     bool enableCaching = 12;
