@@ -28,6 +28,7 @@ message Report {
     string report_name = 8;
     string title_name = 9;
     bool thresholdAlert = 10;
+    string createdAt = 12;
 }
 
 message ReportLineItem {
