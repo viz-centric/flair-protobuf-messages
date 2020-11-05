@@ -16,7 +16,7 @@ message GetConnectionResponse {
     Connection connection = 1;
 }
 
-message ConnectionResponses {
+message GetAllConnectionsResponse {
     repeated Connection connection = 1;
 }
 
@@ -24,8 +24,10 @@ message ConnectionTypesResponses {
     repeated ConnectionType connectionTypes = 1;
 }
 
-message EmptyConnection {
-
+message GetAllConnectionsRequest {
+    string linkId = 1;
+    int64 realmId = 2;
+    int64 connectionType = 3;
 }
 
 message GetAllConnectionTypesRequest {
@@ -88,6 +90,6 @@ service ConnectionService {
     rpc UpdateConnection(UpdateConnectionRequest) returns (UpdateConnectionResponse) {};
     rpc TestConnection(TestConnectionRequest) returns (TestConnectionResponse) {};
     rpc ListTables(ListTablesRequest) returns (ListTablesResponse) {};
-    rpc GetAllConnections(EmptyConnection) returns (ConnectionResponses) {};
+    rpc GetAllConnections(GetAllConnectionsRequest) returns (GetAllConnectionsResponse) {};
     rpc GetConnectionTypes(GetAllConnectionTypesRequest) returns (ConnectionTypesResponses) {};
 }

@@ -69,6 +69,9 @@ message SearchReportsRequest {
     string endDate = 4;
     int32 pageSize = 5;
     int32 page = 6;
+    bool thresholdAlert = 7;
+    string dashboardName = 8;
+    string viewName = 9;
 }
 
 message SearchReportsResponse {
@@ -110,6 +113,10 @@ message GetTeamConfigRequest {
 
 message GetTeamConfigResponse {
     repeated TeamConfigParameters records = 1;
+}
+
+message GetTeamNamesResponse {
+    repeated string records = 1;
 }
 
 message UpdateTeamWebhookURLRequest {
@@ -171,6 +178,18 @@ message DisableTicketCreationRequest {
     int32 schedulerTaskLogId = 1;
 }
 
+message NotifyOpenedJiraTicketRequest{
+    OpenJiraTicket openJiraTicket = 1;
+}
+
+message IsConfigExistRequest{
+    int32 id = 1;
+}
+
+message IsConfigExistResponse{
+    bool isConfigExist = 1;
+}
+
 
 service ReportService {
     rpc GetScheduledReport(GetScheduledReportRequest) returns (ScheduleReportResponse) {};
@@ -187,6 +206,7 @@ service ReportService {
     rpc AddEmailConfigs(AddEmailConfigsRequest) returns (ConfigsResponse) {};
     rpc GetEmailConfig(GetEmailConfigRequest) returns (GetEmailConfigResponse) {};
     rpc GetTeamConfig(GetTeamConfigRequest) returns (GetTeamConfigResponse) {};
+    rpc GetTeamNames(GetTeamConfigRequest) returns (GetTeamNamesResponse) {};
     rpc UpdateTeamWebhookURL(UpdateTeamWebhookURLRequest) returns (ConfigsResponse) {};
     rpc UpdateEmailSMTP(UpdateEmailSMTPRequest) returns (ConfigsResponse) {};
     rpc DeleteChannelConfig(DeleteChannelConfigRequest) returns (ConfigsResponse) {};
@@ -197,5 +217,6 @@ service ReportService {
     rpc CreateJiraTicket(CreateJiraTicketRequest) returns (CreateJiraTicketResponse) {};
     rpc GetAllJira(GetAllJiraRequest) returns (GetAllJiraResponse) {};
     rpc DisableTicketCreation(DisableTicketCreationRequest) returns (ConfigsResponse) {};
-
+    rpc NotifyOpenedJiraTicket(NotifyOpenedJiraTicketRequest) returns (ConfigsResponse) {};
+    rpc IsConfigExist(IsConfigExistRequest) returns (IsConfigExistResponse) {};
 }

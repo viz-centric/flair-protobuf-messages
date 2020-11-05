@@ -20,7 +20,6 @@ message Report {
     string userid = 1;
     string dashboard_name = 2;
     string view_name = 3;
-    string view_id = 11;
     string share_link = 4;
     string build_url = 5;
     string mail_body = 6;
@@ -28,6 +27,8 @@ message Report {
     string report_name = 8;
     string title_name = 9;
     bool thresholdAlert = 10;
+    string view_id = 11;
+    string createdDate = 12;
 }
 
 message ReportLineItem {
@@ -80,6 +81,7 @@ message ReportLog {
     bool enableTicketCreation = 13;
     string viewTicket = 14;
     Query query = 15;
+    string visualizationId = 16;
 }
 
 message ChannelParameters {
@@ -129,4 +131,10 @@ message JiraTickets {
     string summary = 8;
     string viewTicket = 9;
     string createdBy = 10;
+}
+
+message OpenJiraTicket {
+    string project = 1;
+    int32 webhookID = 2;
+    repeated string channels = 3;
 }
