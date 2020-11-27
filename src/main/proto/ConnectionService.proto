@@ -81,6 +81,7 @@ message ListTablesRequest {
     string tableNameLike = 2;
     Connection connection = 3;
     int32 maxEntries = 4;
+    string schemaName = 5;
 }
 
 service ConnectionService {
