@@ -22,6 +22,7 @@ message ConnectionType {
     string name = 2;
     string bundleClass = 3;
     ConnectionPropertiesSchema connectionPropertiesSchema = 4;
+    map<string, string> config = 5;
 
     message ConnectionPropertiesSchema {
         string connectionDetailsClass = 1;
