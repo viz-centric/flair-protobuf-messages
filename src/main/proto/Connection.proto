@@ -22,13 +22,13 @@ message ConnectionType {
     string name = 2;
     string bundleClass = 3;
     ConnectionPropertiesSchema connectionPropertiesSchema = 4;
-    map<string, string> config = 5;
 
     message ConnectionPropertiesSchema {
         string connectionDetailsClass = 1;
         string connectionDetailsType = 2;
         string imagePath = 3;
         repeated ConnectionProperty connectionProperties = 4;
+        map<string, string> config = 5;
 
         message ConnectionProperty {
             string displayName = 1;
