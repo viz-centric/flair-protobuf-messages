@@ -28,6 +28,7 @@ message ConnectionType {
         string connectionDetailsType = 2;
         string imagePath = 3;
         repeated ConnectionProperty connectionProperties = 4;
+        map<string, string> config = 5;
 
         message ConnectionProperty {
             string displayName = 1;
